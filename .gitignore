@@ -19,6 +19,7 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
 node_modules
 
+/bower_components
 /node_modules
 /npm-debug.log
 /test/assets/package-*/
@@ -27,4 +28,3 @@ node_modules
 /test/tmp/
 /bower.json
 /component.json
-/bower_components
