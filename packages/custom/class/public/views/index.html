@@ -1,0 +1,12 @@
+<div class="" data-ng-controller="ClassController" ng-init="getList()">
+  <h1>Lista de Clases</h1>
+  <ul>
+    <li ng-repeat="item in classes"> 
+      <strong>{{item.name}}</strong> 
+      <p> {{item.description}} </p>
+    </li>
+    <li>----</li>
+  </ul>
+  <h2>Package: {{package.name}}</h2>
+</div>
+
