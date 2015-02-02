@@ -1,6 +1,31 @@
 'use strict';
 
 /* jshint -W098 */
+
+var spells = require('../controllers/spell');
+
+// Article authorization helpers
+var hasAuthorization = function(req, res, next) {
+  if (!req.user.isAdmin && req.article.user.id !== req.user.id) {
+    return res.status(401).send('User is not authorized');
+  }
+  next();
+};
+
+module.exports = function(Spell, app, auth) {
+
+  app.route('/spells')
+    .get(spells.all)
+    .post(spells.create);
+/* app.route('/classes/:classId')
+    .get(auth.isMongoId, articles.show)
+    .put(auth.isMongoId, auth.requiresLogin, hasAuthorization, articles.update)
+    .delete(auth.isMongoId, auth.requiresLogin, hasAuthorization, articles.destroy);
+*/
+  // Finish with setting up the classId param
+  //app.param('classId', classes.class);
+};
+/*
 // The Package is past automatically as first parameter
 module.exports = function(Book, app, auth, database) {
 
@@ -25,3 +50,4 @@ module.exports = function(Book, app, auth, database) {
     });
   });
 };
+*/

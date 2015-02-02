@@ -1,5 +1,7 @@
 {
   "name": "book",
   "version": "0.0.1",
-  "dependencies": {}
+  "dependencies": {
+    "resource": "latest"
+  }
 }

@@ -10,7 +10,7 @@ angular.module('mean.class')
   ])
   .factory('Classes',['$resource',
     function($resource){
-        return $resource('/classes/');
+      return $resource('/classes/');
     }
   ]);
   /*

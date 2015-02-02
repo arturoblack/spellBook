@@ -1,55 +1,93 @@
 <div class="" data-ng-controller="BookController">
   <form name="spellForm" class="form-horizontal" role="form" data-ng-submit="create(spellForm.$valid)" novalidate>
-    <div class="row form-group">
-      <label class="col-md-4"> Nombre </label>
+    <div class="row form-group" ng-class="{ 'has-error' : submitted && spellForm.name.$invalid }">
+      <label mean-token="'create-name'" class="col-md-4 control-label"> Nombre </label>
       <div class="col-md-8">
-        <input type="text" name="name" class="form-control">
+        <input data-ng-model="name" type="text" name="name" class="form-control" placeholder="Nombre" required >
+        <div ng-show="submitted && spellForm.name.$invalid" class="help-block">
+          <p ng-show="spellForm.name.$error.required">El campo <stong>Nombre</stong> es obligatorio.</p>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6">
-        <label>Nivel</label>
-        <input type="number">
+      <div class="col-md-6 form-group" ng-class="{ 'has-error' : submitted && spellForm.level.$invalid }">
+        <label mean-token="'create-level'" class="col-md-4 control-label">Nivel</label>
+        <div class="col-md-8">
+          <input data-ng-model="level" name="level" type="number" class="form-control" required>
+            <div ng-show="submitted && spellForm.level.$invalid" class="help-block">
+              <p ng-show="spellForm.level.$error.required">El campo <stong>Nivel</stong> es obligatorio.</p>
+            </div>
+          </div>
       </div>
-      <div class="col-md-6">
-        <label>Escuela</label>
-        <select>
-          <option value="1">Abjuracion</option>
-          <option value="2">Adivinacion</option>
-          <option value="3">Conjuracion</option>
-          <option value="4">Evocacion</option>
-          <option value="5">Transmutacion</option>
-          <option value="6">Ilusion</option>
-        </select>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <label>Tiempo de Casteo</label>
-        <input name="text">
-      </div>
-      <div class="col-md-6">
-        <label>Rango de Accion</label>
-        <input name="text">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <label>Componente</label>
-        <p> Verbal </p>
-        <p> Somatico </p>
-        <p> Material </p>
-      </div>
-      <div class="col-md-6">
-        <label>Duracion</label>
-        <input type="number">
+      <div class="col-md-6 form-group" ng-class="{ 'has-error' : submitted && spellForm.school.$invalid }">
+        <label mean-token="'create-school'" class="col-md-4 control-label">Escuela</label>
+          <div class="col-md-8">
+            <select name="school" data-ng-model="school" class="form-control" required>
+              <option value="1">Abjuracion</option>
+              <option value="2">Adivinacion</option>
+              <option value="3">Conjuracion</option>
+              <option value="4">Evocacion</option>
+              <option value="5">Transmutacion</option>
+              <option value="6">Ilusion</option>
+            </select>
+            <div ng-show="submitted && spellForm.school.$invalid" class="help-block">
+              <p ng-show="spellForm.school.$error.required">El campo <stong>Escuela</stong> es obligatorio.</p>
+            </div>
+          </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <label>Descripcion</label>
-        <textarea></textarea>
+      <div class="col-md-6 form-group" ng-class="{ 'has-error' : submitted && spellForm.casting_time.$invalid }">
+        <label mean-token="'create-casting_time'" class="col-md-4 control-label">Tiempo de Casteo</label>
+        <div class="col-md-8">
+          <input data-ng-model="casting_time" type="text" name="casting_time" class="form-control" required>
+          <div ng-show="submitted && spellForm.school.$invalid" class="help-block">
+            <p ng-show="spellForm.school.$error.required">El campo <stong>Tiempo de casteo</stong> es obligatorio.</p>
+          </div>
+        </div>
       </div>
+      <div class="col-md-6 form-group" ng-class="{ 'has-error' : submitted && spellForm.range.$invalid }">
+        <label mean-token="'create-range'" class="col-md-4 control-label">Rango de Acción</label>
+        <div class="col-md-8">
+          <input data-ng-model="range" type="text" name="range" class="form-control" required>
+          <div ng-show="submitted && spellForm.range.$invalid" class="help-block">
+            <p ng-show="spellForm.range.$error.required">El campo <stong>Rango de Acción</stong> es obligatorio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label mean-token="'create-component'" class="col-md-4 control-label">Componente</label>
+        <div class="col-md-8">
+          <p> <input data-ng-model="verbal" type="checkbox" name="verbal"> Verbal </p>
+          <p> <input data-ng-model="somatic" type="checkbox" name="somatic"> Somatico </p>
+          <p> <input data-ng-model="material" type="checkbox" name="material"> Material </p>
+        </div>
+      </div>
+      <div class="col-md-6 form-group" ng-class="{ 'has-error' : submitted && spellForm.duration.$invalid }">
+        <label mean-token="'create-duration'" class="col-md-4 control-label">Duración</label>
+        <div class="col-md-8">
+          <input data-ng-model="duration" type="number" name="duration" class="form-control" required>
+          <div ng-show="submitted && spellForm.duration.$invalid" class="help-block">
+            <p ng-show="spellForm.duration.$error.required">El campo <stong>Duración</stong> es obligatorio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group" ng-class="{ 'has-error' : submitted && spellForm.description.$invalid }">
+        <label mean-token="'create-description'" class="col-md-4 control-label">Descripción</label>
+        <div class="col-md-8">
+          <textarea data-ng-model="description" name="description" class="form-control" required></textarea>
+          <div ng-show="submitted && spellForm.description.$invalid" class="help-block">
+            <p ng-show="spellForm.description.$error.required">El campo <stong>Descripción</stong> es obligatorio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+       <button mean-token="'create-submit'" type="submit" class="btn btn-info">Guardar Clase</button>
     </div>
   </form>
 </div>

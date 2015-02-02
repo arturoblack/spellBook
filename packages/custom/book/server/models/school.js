@@ -6,55 +6,15 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
-
 /**
  * Spell Schema
  */
-var SpellSchema = new Schema({
+var SchoolSchema = new Schema({
   created: {
     type: Date,
     default: Date.now
   },
   name: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  tag: [{
-    type: String,
-    trim: true
-  }],
-  level: {
-    type: Number,
-    required: true,
-  },
-  school: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  casting_time: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  range: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  components: {
-    verbal:Boolean,
-    somatic:Boolean,
-    material:Boolean,
-    _id: false,
-  },
-  duration: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  description: {
     type: String,
     required: true,
     trim: true
